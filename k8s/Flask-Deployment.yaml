@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hearus-flask-svc
+  labels:
+    app.kubernetes.io/name: hearus-flask
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5000
+      targetPort: 5000
+      name: hearus-flask
+  selector:
+    app.kubernetes.io/name: hearus-flask
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hearus-flask
+  labels:
+    app.kubernetes.io/name: hearus-flask
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hearus-flask
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hearus-flask
+    spec:
+      containers:
+      - image: judemin/hearus-flask-serving
+        name: hearus-flask
+        ports:
+        - containerPort: 5000
+          name: hearus-flask

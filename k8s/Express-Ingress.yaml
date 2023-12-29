@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hearus-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: Hearus-project-vpc-public-ap-northeast-2a, Hearus-project-vpc-public-ap-northeast-2c
+spec:
+  rules:
+  - http:
+       paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: hearus-front-svc
+              port:
+                number: 80
+        - pathType: Prefix
+          path: /transcribe
+          backend:
+            service:
+              name: hearus-flask-svc
+              port:
+                number: 5000
+        - pathType: Prefix
+          path: /process
+          backend:
+            service:
+              name: hearus-flask-svc
+              port:
+                number: 5000
