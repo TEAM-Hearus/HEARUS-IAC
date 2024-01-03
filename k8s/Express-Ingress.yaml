@@ -18,17 +18,3 @@ spec:
               name: hearus-front-svc
               port:
                 number: 80
-        - pathType: Prefix
-          path: /transcribe
-          backend:
-            service:
-              name: hearus-flask-svc
-              port:
-                number: 5000
-        - pathType: Prefix
-          path: /process
-          backend:
-            service:
-              name: hearus-flask-svc
-              port:
-                number: 5000
