@@ -29,7 +29,7 @@ spec:
         app.kubernetes.io/name: hearus-front
     spec:
       containers:
-      - image: choijihyeok/hearus-front-vue
+      - image: judemin/hearus-front-vue
         name: hearus-front
         ports:
         - containerPort: 80
