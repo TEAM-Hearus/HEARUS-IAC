@@ -5,10 +5,11 @@ metadata:
   labels:
     app.kubernetes.io/name: hearus-back
 spec:
+  type: LoadBalancer
   ports:
     - port: 3000
       targetPort: 3000
-      protocol: TCP
+      name: back-ws
   selector:
     app.kubernetes.io/name: hearus-back
 ---
@@ -30,6 +31,9 @@ spec:
       containers:
       - image: judemin/hearus-back-node
         name: hearus-back
+        env:
+        - name: FLASK_HOST
+          value: http://hearus-flask-svc.default.svc.cluster.local/
         ports:
         - containerPort: 3000
-          name: hearus-back
+          name: back-ws
