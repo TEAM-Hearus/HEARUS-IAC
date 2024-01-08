@@ -29,7 +29,7 @@ spec:
         app.kubernetes.io/name: hearus-front
     spec:
       containers:
-      - image: judemin/hearus-front-vue
+      - image: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue:lastest
         name: hearus-front
         ports:
         - containerPort: 80
