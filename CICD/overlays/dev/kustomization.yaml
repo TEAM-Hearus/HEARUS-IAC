@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue:lastest
-  newName: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue:lastest
+- name: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue
+  newName: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue
   newTag: newtag
 resources:
 - ../../base
