@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hearus-front-svc
+  labels:
+    app.kubernetes.io/name: hearus-front
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      name: hearus-front
+  selector:
+    app.kubernetes.io/name: hearus-front
