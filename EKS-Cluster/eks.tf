@@ -18,11 +18,15 @@ module "eks" {
     one = {
       name = "node-group"
 
-      instance_types = ["t3.small"]
+      use_custom_launch_template = false
 
-      min_size     = 2
-      max_size     = 2
-      desired_size = 2
+      disk_size = 40
+
+      instance_types = ["t3.large"]
+
+      min_size     = 1
+      max_size     = 11
+      desired_size = 1
     }
 
   }
