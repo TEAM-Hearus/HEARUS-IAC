@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue
   newName: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue
-  newTag: f4e9fe24
+  newTag: 1d2d1f92
 resources:
 - ../../base
 patchesStrategicMerge:
