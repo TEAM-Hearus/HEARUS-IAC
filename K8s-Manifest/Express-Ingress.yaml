@@ -9,6 +9,9 @@ metadata:
     alb.ingress.kubernetes.io/subnets: Hearus-project-vpc-public-ap-northeast-2a, Hearus-project-vpc-public-ap-northeast-2c
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:939992775538:certificate/e4e13506-a218-449a-ac0c-e2de8895ce89
 spec:
   rules:
   - http:
@@ -19,11 +22,11 @@ spec:
             service:
               name: hearus-back-svc
               port:
-                number: 80
+                number: 443
         - pathType: Prefix
           path: /
           backend:
             service:
               name: hearus-front-svc
               port:
-                number: 80
+                number: 443

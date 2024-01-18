@@ -7,8 +7,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 443
+      targetPort: 443
       name: hearus-front
   selector:
     app.kubernetes.io/name: hearus-front
@@ -20,6 +20,7 @@ metadata:
   labels:
     app.kubernetes.io/name: hearus-front
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: hearus-front
@@ -29,11 +30,11 @@ spec:
         app.kubernetes.io/name: hearus-front
     spec:
       containers:
-      - image: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue:f4e9fe24
+      - image: 939992775538.dkr.ecr.ap-northeast-2.amazonaws.com/hearus-front-vue:1d2d1f92
         name: hearus-front
         env:
         - name: VUE_APP_K8S
-          value: http://k8s-default-hearusin-9dcb9ae515-2063086509.ap-northeast-2.elb.amazonaws.com
+          value: https://k8s-default-hearusin-9dcb9ae515-1957827347.ap-northeast-2.elb.amazonaws.com
         ports:
-        - containerPort: 80
+        - containerPort: 443
           name: hearus-front
